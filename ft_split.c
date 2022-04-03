@@ -79,4 +79,3 @@ char	**ft_split(char const *s, char c)
 	buff[i] = 0;
 	return (buff);
 }
-
