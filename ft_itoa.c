@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: odursun <odursun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 16:34:43 by odursun           #+#    #+#             */
-/*   Updated: 2022/05/06 18:47:47 by odursun          ###   ########.fr       */
+/*   Created: 2022/01/09 16:24:11 by odursun           #+#    #+#             */
+/*   Updated: 2022/01/14 10:58:41 by odursun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_itoa(int n)
 {
-	char	*substr;
-	size_t	new_len;
+	char	*r;
+	int		tmp;
+	int		a;
 
-	if (!s || (unsigned int)ft_strlen(s) < start || len > 2147483647)
-		return (ft_strdup(""));
-	new_len = ft_strlen(s + start);
-	if (new_len < len)
-		len = new_len;
-	substr = (char *)malloc(sizeof(char) * (len + 1));
-	if (!substr)
-		return (NULL);
-	ft_strlcpy(substr, s + start, len + 1);
-	return (substr);
+	a = 1;
+	tmp = n;
+	while (tmp && a++)
+		tmp = tmp / 10;
+	r = (char *)malloc(sizeof(char) * ((n < 0) + a + (n == 0)));
+	if (!r)
+		return (r);
+	r = r + (n < 0) + a - 1 + (n == 0);
+	*r = '\0';
+	if (n == 0)
+		*(--r) = '0';
+	a = (n >= 0) * 2 - 1;
+	while (n)
+	{
+		*(--r) = (n % (10 * a)) * a + '0';
+		n = n / 10;
+	}
+	if (a < 0)
+		*(--r) = '-';
+	return (r);
 }

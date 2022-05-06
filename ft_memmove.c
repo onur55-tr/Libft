@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: odursun <odursun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 16:34:43 by odursun           #+#    #+#             */
-/*   Updated: 2022/05/06 18:47:47 by odursun          ###   ########.fr       */
+/*   Created: 2022/01/04 13:41:26 by odursun           #+#    #+#             */
+/*   Updated: 2022/01/13 14:01:17 by odursun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	*substr;
-	size_t	new_len;
+	unsigned char	*d;
+	unsigned char	*s;
 
-	if (!s || (unsigned int)ft_strlen(s) < start || len > 2147483647)
-		return (ft_strdup(""));
-	new_len = ft_strlen(s + start);
-	if (new_len < len)
-		len = new_len;
-	substr = (char *)malloc(sizeof(char) * (len + 1));
-	if (!substr)
-		return (NULL);
-	ft_strlcpy(substr, s + start, len + 1);
-	return (substr);
+	d = (unsigned char *)dst;
+	s = (unsigned char *)src;
+	if (!s && !d)
+		return (d);
+	if (s < d)
+		while (len--)
+			d[len] = s[len];
+	else
+		while (len--)
+			*d++ = *s++;
+	return (dst);
 }
