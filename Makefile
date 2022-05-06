@@ -38,15 +38,19 @@ all:			$(NAME)
 
 $(NAME):		$(OBJS)
 				@ar rcs $(NAME) $(OBJS)
+				@echo ➤ arşivleme işlemi başlatılıyor...
 
 bonus:			$(OBJS) $(OBJS_BONUS)
 				@ar rcs $(NAME) $(OBJS) $(OBJS_BONUS)
+				@echo ➤ b. arşivleme işlemi başlatılıyor...
 
 clean:
 				$(RM) $(OBJS) $(OBJS_BONUS)
+				@echo ➤ nesne dosyalar siliniyor...
 
 fclean:			clean
 				$(RM) $(NAME)
+				@echo ➤ hepsi siliniyor...
 
 re:				fclean $(NAME)
 
