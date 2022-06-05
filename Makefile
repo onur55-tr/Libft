@@ -27,6 +27,8 @@ OBJS_BONUS 		= $(BONUS:.c=.o)
 OBJS			= $(SRCS:.c=.o)
 
 PRINTF 			= LC_NUMERIC="en_US.UTF-8" printf
+IGREEN			= \033[0;92m
+RESET		=	\033[0m
 
 CC			= @gcc
 
