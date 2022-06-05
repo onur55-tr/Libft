@@ -26,9 +26,11 @@ OBJS_BONUS 		= $(BONUS:.c=.o)
 
 OBJS			= $(SRCS:.c=.o)
 
-CC				= @gcc
+PRINTF 			= LC_NUMERIC="en_US.UTF-8" printf
 
-RM				= @rm -f
+CC			= @gcc
+
+RM			= @rm -f
 
 CFLAGS			= -Wall -Wextra -Werror -I.
 
