@@ -39,6 +39,7 @@ all:			$(NAME)
 $(NAME):		$(OBJS)
 				@ar rcs $(NAME) $(OBJS)
 				@echo ➤ arşivleme işlemi başlatılıyor...
+				@$(PRINTF) "➤ $(NAME)\033[0;92m is up to date!\033[0;39m\n"
 
 bonus:			$(OBJS) $(OBJS_BONUS)
 				@ar rcs $(NAME) $(OBJS) $(OBJS_BONUS)
