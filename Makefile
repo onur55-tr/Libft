@@ -48,6 +48,8 @@ $(NAME):		$(OBJS)
 bonus:			$(OBJS) $(OBJS_BONUS)
 				@ar rcs $(NAME) $(OBJS) $(OBJS_BONUS)
 				@echo ➤ b. arşivleme işlemi başlatılıyor...
+%.o: %.c
+				$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
 				$(RM) $(OBJS) $(OBJS_BONUS)
